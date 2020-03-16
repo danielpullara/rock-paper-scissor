@@ -30,7 +30,7 @@ function App() {
       <ChoiceCard title="Computer" winner={true} imgURL={choices.paper} />
       </div>
   )
-}git status
+}
 
 export default App;
 
