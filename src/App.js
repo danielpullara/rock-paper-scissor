@@ -54,6 +54,8 @@ export const getRoundOutcome = userChoice => {
 
   if (userChoice === computerChoice) result = "Tie game!";
   return [result, computerChoice];
+
+  
 };
 
 
@@ -63,11 +65,13 @@ export const getRandomChoice = () => {
   let choiceName = choiceNames[randomIndex];
   return CHOICES[choiceName];
 };
+ 
 
 function App() {
   const [playerChoice, setPlayerChoice] = useState(null);
   const [computerChoice, setComputerChoice] = useState(null);
   const [result, setResult] = useState(null)
+  const [gameHistory, setGameHistory] = useState([]);
   // const [prompt, onPlayerChoose] = useState('Start')
   // const [result, setResult] = useState()
 
@@ -80,6 +84,9 @@ function App() {
     setResult(result)
     setPlayerChoice(newUserChoice);
     setComputerChoice(newComputerChoice);
+    // setGamePrompt(result);
+    gameHistory.push(result);
+    setGameHistory(gameHistory);
   };
 
   return (
@@ -115,6 +122,14 @@ function App() {
           Scissors
   </button>
       </div>
+      <div className="col-md-4 themed-grid-col">
+  <h3>History</h3>
+  <ul>
+    {gameHistory.map(result => {
+      return <li>{result}</li>;
+    })}
+  </ul>
+</div>
     </div>
   )
 }
